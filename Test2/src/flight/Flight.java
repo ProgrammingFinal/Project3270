@@ -15,6 +15,17 @@ public class Flight {
 	boolean reserve;
 	int maxPassengers;
 	
+	public Flight() {
+	}
+	
+	public Flight(String date, String time, String departingCity, String arrivingCity, int flightNum) {
+		this.date = date;
+		this.time = time;
+		this.departingCity = departingCity;
+		this.arrivingCity = arrivingCity;
+		this.flightNum = flightNum;
+	}
+	
 	public String getDate() {
 		return date;
 	}
