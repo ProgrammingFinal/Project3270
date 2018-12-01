@@ -1,4 +1,4 @@
-package flight;
+package classes;
 
 import java.util.Date;
 
