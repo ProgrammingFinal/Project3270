@@ -9,6 +9,12 @@ public class Flight {
 	//scheduled date and time, not current
 	String date;
 	String time;
+	int month; 
+	int day; 
+	int year; 
+	int hour; 
+	int minute;
+	int second;
 	
 	String departingCity;
 	String arrivingCity;
