@@ -74,8 +74,8 @@ public class Flight {
 			}
 		}
 	//get fight information
-	public String getFlightInfo(int flightNum, String date, String time, String departingCity, String arrivingCity) {
-		return "Flight Number is " + flightNum + ", date is " + date + ", time is " + time + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
+	public String getFlightInfo(int flightNum, String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity) {
+		return "Flight Number is " + flightNum + ", date is " + date + ", departure time is " + departureTime + ", arrival time is " + arrivalTime + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
 	}
 	
 	public void setMaxPass (int maxPass) {
