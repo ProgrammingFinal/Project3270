@@ -24,9 +24,10 @@ public class Flight {
 	public Flight() {
 	}
 	
-	public Flight(String date, String time, String departingCity, String arrivingCity, int flightNum) {
+	public Flight(String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity, int flightNum) {
 		this.date = date;
-		this.time = time;
+		this.arrivalTime = arrivalTime;
+		this.departureTime = departureTime;
 		this.departingCity = departingCity;
 		this.arrivingCity = arrivingCity;
 		this.flightNum = flightNum;
@@ -36,8 +37,12 @@ public class Flight {
 		return date;
 	}
 	
-	public String getTime() {
-		return time;
+	public String getArrivalTime() {
+		return arrivalTime;
+	}
+	
+	public String getDepartureTime() {
+		return departureTime;
 	}
 	
 	public int getNumOfPassengers() {
