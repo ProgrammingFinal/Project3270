@@ -59,20 +59,18 @@ public class Flight {
 	public boolean isReserved() {
 		return reserve;
 	}
-	
-	//set flight to reserved
-	public void setReserve() {
-		reserve = true;
-	}
-	
+	//Book a flight and add 1 to total number of passengers
+		public void bookFlight() {
+			if(isFull(maxPassengers, numOfPassengers)==false) {
+				reserve=true;
+				numOfPassengers = numOfPassengers + 1;
+			}else {
+				System.out.println("Flight is full");
+			}
+		}
 	//get fight information
 	public String getFlightInfo(int flightNum, String date, String time, String departingCity, String arrivingCity) {
 		return "Flight Number is " + flightNum + ", date is " + date + ", time is " + time + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
-	}
-	
-	//When a flight is booked, correct number of passengers
-	public void bookFlight() {
-		numOfPassengers = numOfPassengers + 1;
 	}
 	
 	public void setMaxPass (int maxPass) {
