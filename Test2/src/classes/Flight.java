@@ -61,7 +61,7 @@ public class Flight {
 	}
 	
 	//check is flight is reserved or not
-	public boolean isReserved() {
+	public boolean checkReserved() {
 		return reserve;
 	}
 	//Book a flight and add 1 to total number of passengers
