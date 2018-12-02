@@ -6,9 +6,9 @@ public class Flight {
 	
 	int numOfPassengers;
 	int flightNum;
-	//scheduled date and time, not current
 	String date;
-	String time;
+	String arrivalTime;
+	String departureTime;
 	int month; 
 	int day; 
 	int year; 
