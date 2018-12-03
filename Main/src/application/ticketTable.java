@@ -1,5 +1,5 @@
 package application;
 
-public class DBConnection {
+public class ticketTable {
 
 }
