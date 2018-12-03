@@ -41,6 +41,7 @@ public class Flight {
 	
 	}
 	
+	//flight object with parameters 
 	public Flight(String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity, int flightNum) {
 		this.date = date;
 		this.arrivalTime = arrivalTime;
@@ -50,36 +51,35 @@ public class Flight {
 		this.flightNum = flightNum;
 	}
 	
+	//Getters and setters
 	public String getDate() {
 		return date;
 	}
-	
 	public String getArrivalTime() {
 		return arrivalTime;
 	}
-	
 	public String getDepartureTime() {
 		return departureTime;
 	}
-	
 	public int getNumOfPassengers() {
 		return numOfPassengers;
-	}
-	public int maxPassengers() {
-		return maxPassengers;
 	}
 	public int getFlightNum() {
 		return flightNum;
 	}
-	
 	public String getFromCity() {
 		return departingCity;
 	}
-	
 	public String getToCity() {
 		return arrivingCity;
 	}
-	
+	public int maxPassengers() {
+		return maxPassengers;
+	}
+	public void setMaxPass (int maxPass) {
+		this.maxPassengers = maxPassengers;
+	}
+
 	//check if flight is reserved or not
 	public boolean checkReserved() {
 		return reserve;
@@ -98,11 +98,6 @@ public class Flight {
 	//get fight information
 	public String getFlightInfo(int flightNum, String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity) {
 		return "Flight Number is " + flightNum + ", date is " + date + ", departure time is " + departureTime + ", arrival time is " + arrivalTime + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
-	}
-	
-	
-	public void setMaxPass (int maxPass) {
-		this.maxPassengers = maxPassengers;
 	}
 	
 	//check if flight is full and return boolean value
