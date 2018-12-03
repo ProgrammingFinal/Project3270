@@ -15,12 +15,12 @@ public class Flight {
 	int hour; 
 	int minute;
 	int second;
-	
 	String departingCity;
 	String arrivingCity;
 	boolean reserve;
 	int maxPassengers;
 	
+	//no arg constructor
 	public Flight() {
 	}
 	
@@ -47,6 +47,9 @@ public class Flight {
 	
 	public int getNumOfPassengers() {
 		return numOfPassengers;
+	}
+	public int maxPassengers() {
+		return maxPassengers;
 	}
 	public int getFlightNum() {
 		return flightNum;
@@ -81,6 +84,7 @@ public class Flight {
 	public void setMaxPass (int maxPass) {
 		this.maxPassengers = maxPassengers;
 	}
+	
 	public boolean isFull(int maxPassengers, int numOfPassengers) {
 		boolean isFull; 
 		if(numOfPassengers == maxPassengers || numOfPassengers >= maxPassengers) {
