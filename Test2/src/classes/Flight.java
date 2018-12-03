@@ -105,7 +105,7 @@ public class Flight {
 		this.maxPassengers = maxPassengers;
 	}
 	
-	//check if flight is full
+	//check if flight is full and return boolean value
 	public boolean isFull(int maxPassengers, int numOfPassengers) {
 		boolean isFull; 
 		if(numOfPassengers == maxPassengers || numOfPassengers >= maxPassengers) {
