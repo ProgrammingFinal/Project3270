@@ -22,6 +22,22 @@ public class Flight {
 	
 	//no arg constructor
 	public Flight() {
+		this.numOfPassengers = 0;
+		this.flightNum = 0;
+		this.date = "";
+		this.arrivalTime="";
+		this.departureTime="";
+		this.month=0; 
+		this.day = 0; 
+		this.year=0; 
+		this.hour=0; 
+		this.minute=0;
+		this.second=0;
+		this.departingCity="";
+		this.arrivingCity="";
+		this.reserve = false;
+		this.maxPassengers=0;
+	
 	}
 	
 	public Flight(String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity, int flightNum) {
