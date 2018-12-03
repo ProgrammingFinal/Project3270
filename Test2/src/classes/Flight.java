@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Flight {
 	
+	//set to private
 	private int numOfPassengers;
 	private int flightNum;
 	private String date;
