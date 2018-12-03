@@ -71,10 +71,7 @@ class Reservation {
 
 	void setArrive(String arrive) {
 		this.arrive = arrive;
-	}
-	
-	
-	
+	}	
 	
 	
 	
