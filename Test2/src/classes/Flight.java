@@ -4,21 +4,21 @@ import java.util.Date;
 
 public class Flight {
 	
-	int numOfPassengers;
-	int flightNum;
-	String date;
-	String arrivalTime;
-	String departureTime;
-	int month; 
-	int day; 
-	int year; 
-	int hour; 
-	int minute;
-	int second;
-	String departingCity;
-	String arrivingCity;
-	boolean reserve;
-	int maxPassengers;
+	private int numOfPassengers;
+	private int flightNum;
+	private String date;
+	private String arrivalTime;
+	private String departureTime;
+	private int month; 
+	private int day; 
+	private int year; 
+	private int hour; 
+	private int minute;
+	private int second;
+	private String departingCity;
+	private String arrivingCity;
+	private boolean reserve;
+	private int maxPassengers;
 	
 	//no arg constructor
 	public Flight() {
