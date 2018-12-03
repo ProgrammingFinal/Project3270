@@ -6,27 +6,44 @@ public class Flight {
 	
 	int numOfPassengers;
 	int flightNum;
-	//scheduled date and time, not current
 	String date;
-	String time;
+	String arrivalTime;
+	String departureTime;
 	int month; 
 	int day; 
 	int year; 
 	int hour; 
 	int minute;
 	int second;
-	
 	String departingCity;
 	String arrivingCity;
 	boolean reserve;
 	int maxPassengers;
 	
+	//no arg constructor
 	public Flight() {
+		this.numOfPassengers = 0;
+		this.flightNum = 0;
+		this.date = "";
+		this.arrivalTime="";
+		this.departureTime="";
+		this.month=0; 
+		this.day = 0; 
+		this.year=0; 
+		this.hour=0; 
+		this.minute=0;
+		this.second=0;
+		this.departingCity="";
+		this.arrivingCity="";
+		this.reserve = false;
+		this.maxPassengers=0;
+	
 	}
 	
-	public Flight(String date, String time, String departingCity, String arrivingCity, int flightNum) {
+	public Flight(String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity, int flightNum) {
 		this.date = date;
-		this.time = time;
+		this.arrivalTime = arrivalTime;
+		this.departureTime = departureTime;
 		this.departingCity = departingCity;
 		this.arrivingCity = arrivingCity;
 		this.flightNum = flightNum;
@@ -36,12 +53,19 @@ public class Flight {
 		return date;
 	}
 	
-	public String getTime() {
-		return time;
+	public String getArrivalTime() {
+		return arrivalTime;
+	}
+	
+	public String getDepartureTime() {
+		return departureTime;
 	}
 	
 	public int getNumOfPassengers() {
 		return numOfPassengers;
+	}
+	public int maxPassengers() {
+		return maxPassengers;
 	}
 	public int getFlightNum() {
 		return flightNum;
@@ -56,28 +80,27 @@ public class Flight {
 	}
 	
 	//check is flight is reserved or not
-	public boolean isReserved() {
+	public boolean checkReserved() {
 		return reserve;
 	}
-	
-	//set flight to reserved
-	public void setReserve() {
-		reserve = true;
-	}
-	
+	//Book a flight and add 1 to total number of passengers
+		public void bookFlight() {
+			if(isFull(maxPassengers, numOfPassengers)==false) {
+				reserve=true;
+				numOfPassengers = numOfPassengers + 1;
+			}else {
+				System.out.println("Flight is full");
+			}
+		}
 	//get fight information
-	public String getFlightInfo(int flightNum, String date, String time, String departingCity, String arrivingCity) {
-		return "Flight Number is " + flightNum + ", date is " + date + ", time is " + time + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
-	}
-	
-	//When a flight is booked, correct number of passengers
-	public void bookFlight() {
-		numOfPassengers = numOfPassengers + 1;
+	public String getFlightInfo(int flightNum, String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity) {
+		return "Flight Number is " + flightNum + ", date is " + date + ", departure time is " + departureTime + ", arrival time is " + arrivalTime + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
 	}
 	
 	public void setMaxPass (int maxPass) {
 		this.maxPassengers = maxPassengers;
 	}
+	
 	public boolean isFull(int maxPassengers, int numOfPassengers) {
 		boolean isFull; 
 		if(numOfPassengers == maxPassengers || numOfPassengers >= maxPassengers) {
