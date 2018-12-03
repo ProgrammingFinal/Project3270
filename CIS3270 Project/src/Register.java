@@ -2,26 +2,26 @@ import java.util.*;
 public class Register {
 
 	
-	private StringBuilder firstName;
-	private StringBuilder lastName;
-	private StringBuilder username;
-	private StringBuilder password;
-	private StringBuilder address;
+	String firstName;
+	String lastName;
+	private String username;
+	private String password;
+	private String address;
 	private int customerID;
 	private int zip;
-	private StringBuilder state;
-	private StringBuilder email;
-	private StringBuilder ssn;
-	private StringBuilder question;
-	private StringBuilder answer;
+	private String state;
+	private String email;
+	private String ssn;
+	private String question;
+	private String answer;
 	
 	Register(){
-		firstName = new StringBuilder("John");
-		lastName = new StringBuilder ("Doe");
+		firstName = new String("John");
+		lastName = new String ("Doe");
 		customerID = (int) (1000*Math.random()+100);
 	}//no arg
 	
-	Register(StringBuilder first, StringBuilder last, StringBuilder user, StringBuilder pass, StringBuilder address, int iD, int zip, StringBuilder state, StringBuilder email, StringBuilder ssn, StringBuilder question, StringBuilder answer){
+	Register(String first, String last, String user, String pass, String address, int iD, int zip, String state, String email, String ssn, String question, String answer){
 		firstName = first;
 		lastName = last;
 		username = user;
@@ -39,34 +39,34 @@ public class Register {
 	}//multiple arg
 	
 	
-	StringBuilder getFirstName() {
+	String getFirstName() {
 		return firstName;
 	}
-	void setFirstName(StringBuilder firstName) {
+	void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	StringBuilder getLastName() {
+	String getLastName() {
 		return lastName;
 	}
-	void setLastName(StringBuilder lastName) {
+	void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	StringBuilder getUsername() {
+	String getUsername() {
 		return username;
 	}
-	void setUsername(StringBuilder username) {
+	void setUsername(String username) {
 		this.username = username;
 	}
-	StringBuilder getPassword() {
+	String getPassword() {
 		return password;
 	}
-	void setPassword(StringBuilder password) {
+	void setPassword(String password) {
 		this.password = password;
 	}
-	StringBuilder getAddress() {
+	String getAddress() {
 		return address;
 	}
-	void setAddress(StringBuilder address) {
+	void setAddress(String address) {
 		this.address = address;
 	}
 	int getZip() {
@@ -84,34 +84,34 @@ public class Register {
 		this.customerID = customerID;
 	}
 	
-	StringBuilder getState() {
+	String getState() {
 		return state;
 	}
-	void setState(StringBuilder state) {
+	void setState(String state) {
 		this.state = state;
 	}
-	StringBuilder getEmail() {
+	String getEmail() {
 		return email;
 	}
-	void setEmail(StringBuilder email) {
+	void setEmail(String email) {
 		this.email = email;
 	}
-	StringBuilder getSsn() {
+	String getSsn() {
 		return ssn;
 	}
-	void setSsn(StringBuilder ssn) {
+	void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-	StringBuilder getQuestion() {
+	String getQuestion() {
 		return question;
 	}
-	void setQuestion(StringBuilder question) {
+	void setQuestion(String question) {
 		this.question = question;
 	}
-	StringBuilder getAnswer() {
+	String getAnswer() {
 		return answer;
 	}
-	void setAnswer(StringBuilder answer) {
+	void setAnswer(String answer) {
 		this.answer = answer;
 	}
 
