@@ -7,17 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
-
-import javafx.application.*;
-import javafx.collections.*;
-import javafx.event.*;
-import javafx.geometry.*;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.*;
-import javafx.scene.layout.*;
-import javafx.scene.text.*;
-import javafx.stage.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class FlightCreation extends Application implements EventHandler<ActionEvent> {
 
@@ -29,10 +28,10 @@ public class FlightCreation extends Application implements EventHandler<ActionEv
 	}
 
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Shuguang Hong Airlines");
+		primaryStage.setTitle("Flight Creation");
 		AnchorPane anchor = new AnchorPane();
 		anchor.setPadding(new Insets(20, 20, 20, 20));
-		
+
 		// text box for title
 		Text title = new Text("Add Flight");
 		title.setLayoutX(250);
@@ -163,7 +162,7 @@ public class FlightCreation extends Application implements EventHandler<ActionEv
 							+ capacityTxtField.getText() + "', ' " + capacityTxtField.getText() + "')";
 
 					Statement myStat = myConn.createStatement();
-					
+
 					// execute a query
 					;
 					ResultSet myRs;
