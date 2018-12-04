@@ -1,15 +1,31 @@
 package application;
 
-import java.sql.*;
-import javafx.application.*;
-import javafx.event.*;
-import javafx.geometry.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.text.*;
-import javafx.stage.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 public class LogIn extends Application implements EventHandler<ActionEvent> {
 	// declare private data field variables
@@ -36,8 +52,21 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 		LogIn.password = password;
 	}
 
+	// image getter
+	public Image getImg() {
+		return img;
+	}
+
+	// image setter
+	public void setImg(Image img) {
+		this.img = img;
+	}
+
+
 	// sets scene
 	public static Scene scene;
+	private Image img;
+
 
     // main method
 	public static void main(String[] args) {
@@ -61,39 +90,39 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 		anchor.setPadding(new Insets(10, 10, 10, 10));
 
 		// login label
-		Label loginLabel = new Label("Enter your username and password");
+		Label loginLabel = new Label("Please enter your username and password:");
 		// set alignment of login label to center
 		loginLabel.setAlignment(javafx.geometry.Pos.CENTER);
 		// set x-coordinate of login label
-		loginLabel.setLayoutX(150.0);
+		loginLabel.setLayoutX(50.0);
 		// set y-coordinate of login label
 		loginLabel.setLayoutY(50.0);
 		//
 		loginLabel.setPrefHeight(25.0);
-		loginLabel.setPrefWidth(351.0);
-		loginLabel.setText("Enter Your Username And Password");
+		loginLabel.setPrefWidth(450.0);
+		loginLabel.setText("Please enter your username and password:");
 		loginLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-		loginLabel.setFont(new Font(22.0));
+		loginLabel.setFont(new Font(20.0));
 
 		Label usernameLabel = new Label("Username:");
-		usernameLabel.setLayoutX(189.0);
-		usernameLabel.setLayoutY(131.0);
+		usernameLabel.setLayoutX(125.0);
+		usernameLabel.setLayoutY(125.0);
 		usernameLabel.setText("Username:");
 		usernameLabel.setFont(new Font(20.0));
 
 		TextField userTxt = new TextField();
-		userTxt.setLayoutX(311.0);
-		userTxt.setLayoutY(133.0);
+		userTxt.setLayoutX(250.0);
+		userTxt.setLayoutY(125.0);
 		userTxt.setPromptText("Username");
 
 		Label passwordLabel = new Label("Password:");
-		passwordLabel.setLayoutX(193.0);
-		passwordLabel.setLayoutY(174.0);
+		passwordLabel.setLayoutX(130.0);
+		passwordLabel.setLayoutY(175.0);
 		passwordLabel.setFont(new Font(20.0));
 
 		PasswordField passwordTxt = new PasswordField();
-		passwordTxt.setLayoutX(311.0);
-		passwordTxt.setLayoutY(177.0);
+		passwordTxt.setLayoutX(250.0);
+		passwordTxt.setLayoutY(175.0);
 		passwordTxt.setPromptText("Password");
 		passwordTxt.setOnAction(e -> {// Exception handling for connecting to the database
 			try {
@@ -160,11 +189,11 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 
 		// login button and event handler
 		Button login = new Button("Log In");
-		login.setLayoutX(237.0);
-		login.setLayoutY(222.0);
+		login.setLayoutX(250.0);
+		login.setLayoutY(210.0);
 		login.setMnemonicParsing(false);
 		login.setPrefHeight(25.0);
-		login.setPrefWidth(149.0);
+		login.setPrefWidth(150.0);
 		login.setText("Log In");
 
 		login.setOnAction(e -> {
@@ -234,8 +263,8 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 		});
 
 		Button register = new Button("Register");
-		register.setLayoutX(237.0);
-		register.setLayoutY(255.0);
+		register.setLayoutX(250.0);
+		register.setLayoutY(240.0);
 		register.setMnemonicParsing(false);
 		register.setPrefHeight(25.0);
 		register.setPrefWidth(149.0);
@@ -251,8 +280,8 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 
 		//recover password button
 	    Button recPass = new Button("Forgot Password");
-		recPass.setLayoutX(236.0);
-		recPass.setLayoutY(290.0);
+		recPass.setLayoutX(250.0);
+		recPass.setLayoutY(270.0);
 		recPass.setMnemonicParsing(false);
 		recPass.setPrefHeight(26.0);
 		recPass.setPrefWidth(150.0);
@@ -270,8 +299,8 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 
 
 		Button exit = new Button("Exit");
-		exit.setLayoutX(236.0);
-		exit.setLayoutY(328.0);
+		exit.setLayoutX(250.0);
+		exit.setLayoutY(300.0);
 		exit.setMnemonicParsing(false);
 		exit.setPrefHeight(25.0);
 		exit.setPrefWidth(150.0);
@@ -282,11 +311,29 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 
 		exit.setMinWidth(150);
 		register.setMinWidth(150);
-		// RecoverPassword.setMinWidth(150);
+		recPass.setMinWidth(150);
 		login.setMinWidth(150);
+
+
 
 		anchor.getChildren().addAll(userTxt, passwordTxt, login, register, recPass, usernameLabel, exit,
 				loginLabel, passwordLabel);
+		scene = new Scene(anchor, 550, 370);
+		/* setImg(new Image(STYLESHEET_MODENA));
+		 BackgroundImage bgImg = new BackgroundImage(
+				 new Image("C:\Users\Student\Desktop\bw-gradient"),
+				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+				BackgroundSize.DEFAULT);
+		new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
+		anchor.setBackground(new Background(bgImg));
+		;
+		*/
+
+		BackgroundFill myBF = new BackgroundFill(Color.LIGHTSTEELBLUE, new CornerRadii(1), new Insets(0.0, 0.0, 0.0, 0.0));
+		anchor.setBackground(new Background(myBF));
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		primaryStage.centerOnScreen();
 	}
 
 
@@ -295,5 +342,6 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 		// TODO Auto-generated method stub
 
 	}
+
 
 }

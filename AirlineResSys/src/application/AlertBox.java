@@ -1,14 +1,13 @@
 package application;
 
-import javafx.application.Application;
-import javafx.event.*;
 import javafx.geometry.Pos;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class AlertBox {
 public static void display (String title, String message) {
