@@ -38,9 +38,11 @@ package application;
 				try {
 					Thread.sleep(1000);
 					
+					
 				} catch(Exception e){}
 				x++;
 			}
+			
 			frame.setVisible(false);
 			loggedIn = new LogIn();
 		}

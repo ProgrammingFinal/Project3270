@@ -4,25 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Customer extends RegisterUser {
+public class Customer extends User {
 
 	public static void main(String[] args) {
 
-	
-		
+
+
 	}//main
-Scanner input = new Scanner(System.in);
-	
+    Scanner input = new Scanner(System.in);
+
 	private String reservationDate;
 	private String reservationTime;
 	private boolean hasReservation;
-	
+
 	Customer() {
 		reservationDate = "12/29/2018";
 		reservationTime = "8:00 AM";
 		hasReservation = true;
 	}
-	
+
 
 	public String getReservationDate() {
 		return reservationDate;
@@ -51,6 +51,8 @@ Scanner input = new Scanner(System.in);
 
 	public void setHasReservation(boolean hasReservation) {
 		this.hasReservation = hasReservation;
-	}//setHasReservation
+	}
+	
+	//setHasReservation
 
 }//class

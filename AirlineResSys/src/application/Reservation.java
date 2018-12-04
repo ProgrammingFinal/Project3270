@@ -84,19 +84,4 @@ public class Reservation {
 	public void setArrive(String arrive) {
 		this.arrive = arrive;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
