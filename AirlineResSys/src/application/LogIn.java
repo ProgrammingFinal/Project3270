@@ -27,9 +27,9 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 	// declare private data field variables
 	private static String user = "";
 	private static String password = "";
-	
+
 	public LogIn(){
-		
+
 	}
 
 	//User getter
@@ -106,13 +106,13 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 
 		Label usernameLabel = new Label("Username:");
 		usernameLabel.setLayoutX(125.0);
-		usernameLabel.setLayoutY(125.0);
+		usernameLabel.setLayoutY(135.0);
 		usernameLabel.setText("Username:");
 		usernameLabel.setFont(new Font(20.0));
 
 		TextField userTxt = new TextField();
 		userTxt.setLayoutX(250.0);
-		userTxt.setLayoutY(125.0);
+		userTxt.setLayoutY(135.0);
 		userTxt.setPromptText("Username");
 
 		Label passwordLabel = new Label("Password:");
@@ -175,7 +175,7 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 				 */
 				else if (count < 1) {
 					AlertBox.display("Incorrect Log In",
-							"\nUsername and password combination is either incorrect or the account does not exist."
+							"\nUsername and password combination is incorrect."
 							+ "\n Please select the forgot password if your password is unknonwn, or the register option to create an account.");
 				}
 
@@ -251,7 +251,8 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 				 */
 				else if (count < 1) {
 					AlertBox.display("Incorrect Log In",
-							"Username and password combination is either incorrect or the account does not exist.\n Please select The 'Forgot Password' option if your password is unknonwn, \n or the register option to create an account.");
+							"Username and password combination is incorrect."
+							+ "\n Please select The 'Forgot Password' option if your password is unknonwn, \n or the register option to create an account.");
 				}
 
 			}
@@ -305,7 +306,7 @@ public class LogIn extends Application implements EventHandler<ActionEvent> {
 		exit.setPrefHeight(25.0);
 		exit.setPrefWidth(150.0);
 		exit.setOnAction(e -> {
-			AlertBox.display("Exit", "System Will Now exit.");
+			AlertBox.display("Exit", "The system will now exit.");
 			System.exit(0);
 		});
 

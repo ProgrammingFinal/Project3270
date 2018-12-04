@@ -2,16 +2,19 @@ package application;
 
 	import java.awt.*;
 	import javax.swing.*;
-	// welcome screen 
-	public class SplashScreen implements Runnable {
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+	// welcome screen
+	public class SplashScreen extends Application {
 		JFrame frame;
 		JLabel label1, label2, label3;
 		Thread thread;
 		LogIn loggedIn;
 		ImageIcon splash;
 		SplashScreen() {
-			
-			thread = new Thread(this);
+
+			thread = new Thread((Runnable) this);
 			frame = new JFrame("Welcome Screen");
 			frame.getContentPane().setLayout(null);
 			frame.getContentPane().setBackground(Color.BLACK);
@@ -37,13 +40,27 @@ package application;
 			while(x <= 5) {
 				try {
 					Thread.sleep(1000);
-					
-					
+
+
+
 				} catch(Exception e){}
 				x++;
 			}
-			
+
 			frame.setVisible(false);
+
+
+			Application.launch();
+
+
+			loggedIn = new LogIn();
+		}
+		@Override
+		public void start(Stage primaryStage) throws Exception {
+			// TODO Auto-generated method stub
+			Application.launch();
+
+
 			loggedIn = new LogIn();
 		}
 	}

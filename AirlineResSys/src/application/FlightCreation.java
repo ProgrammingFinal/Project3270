@@ -153,13 +153,13 @@ public class FlightCreation extends Application implements EventHandler<ActionEv
 					String sqlFightCheck = "select * From `flights`.`flight` where number = '"
 							+ flightNumberTxtField.getText() + "'";
 
-					String sqlFlightCreate = "INSERT INTO `flights`.`flight`(`id`,`airline`,`number`,`origin_city`,`destination_city`,`departure_date`,"
+					String sqlFlightCreate = "INSERT INTO `flights`.`flight`(`airline`,`number`,`origin_city`,`destination_city`,`departure_date`,"
 							+ "`departure_time`,`arrival_date`,`arrival_time`,`capacity`,`seats_available`) VALUES('"
-							+ flightNumberTxtField.getText() + "', '"+ airlineTxtField.getText() + "', '" + flightNumberTxtField.getText() + "', '"
+							+ airlineTxtField.getText() + "', '" + flightNumberTxtField.getText() + "', '"
 							+ originCityTxtField.getText() + "', '" + destinationCityTxtField.getText() + "' , '"
 							+ departureDateTxtField.getText() + "', '" + departureTimeTxtField.getText() + "', '"
 							+ arrivalDateTxtField.getText() + "', '" + arrivalTimeTxtField.getText() + "', '"
-							+ capacityTxtField.getText() + "', ' " + capacityTxtField.getText() + "')";
+							+ capacityTxtField.getText() +  "', '" + capacityTxtField.getText() + "')";
 
 					Statement myStat = myConn.createStatement();
 
@@ -173,7 +173,7 @@ public class FlightCreation extends Application implements EventHandler<ActionEv
 					}
 					if (count == 0) {
 						myStat.executeUpdate(sqlFlightCreate);
-						AlertBox.display("Success", "FLight Successfully Added!");
+						AlertBox.display("Success", "Flight Successfully Added!");
 
 					} else {
 						AlertBox.display("Error",
@@ -186,7 +186,7 @@ public class FlightCreation extends Application implements EventHandler<ActionEv
 			}
 
 			else {
-				AlertBox.display("Error", "Error: departure cannot be before a arrival");
+				AlertBox.display("Error", "Error: an arrival cannot be before a departure");
 			}
 		});
 

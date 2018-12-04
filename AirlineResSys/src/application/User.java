@@ -1,12 +1,12 @@
 package application;
 
 public class User {
-		private String firstName; //User first name
+		private String firstName; //user first name
 		private String lastName;	//user last name
 		private String Address; //user address
 		private int zipCode; //user zip code
 		private String state; //user state
-		private String username; //use username
+		private static String username; //user username
 		private String password; //user password
 		private String email; //user email 
 		private String ssn; //user social security number
@@ -15,11 +15,28 @@ public class User {
 		private boolean admin; //denotes if user has admin status
 
 		public boolean isAdmin() {
-			return admin;
+			if (username == "admin") {
+				admin = true;
+				return admin;
+			}
+			else {
+				admin = false;
+				return admin;
+			}
+			
 		}
+		
 		public void setAdminStatus(boolean adminStatus) {
+			if (LogIn.getUser() == "admin") {
+				setAdminStatus(true);
+			}
+			else {
+				setAdminStatus(false);
+			}
+
 			this.admin = adminStatus;
 		}
+		
 		public String getFirstName() {
 			return firstName;
 		}
@@ -50,7 +67,7 @@ public class User {
 		public void setState(String state) {
 			this.state = state;
 		}
-		public String getUsername() {
+		public static String getUsername() {
 			return username;
 		}
 		public void setUsername(String username) {

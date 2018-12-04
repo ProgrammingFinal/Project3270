@@ -142,8 +142,8 @@ public class FlightRegistration extends Application implements EventHandler<Acti
 
 					Connection myConn;
 					myConn = DriverManager.getConnection(
-							"jdbc:mysql://35.193.248.221:3306/?verifyServerCertificate=false&useSSL=true", "root",
-							"Tdgiheay12");
+							"jdbc:mysql://127.0.0.1:3306/demo", "root",
+							"programmingfinal1");
 					String sqlFightCheck = "select * From `flights`.`flight` where number = '"
 							+ flightNumberTxtField.getText() + "'";
 
@@ -166,7 +166,7 @@ public class FlightRegistration extends Application implements EventHandler<Acti
 					}
 					if (count == 0) {
 						myStat.executeUpdate(sqlFlightCreate);
-						AlertBox.display("Success", "FLight Successfully Added!");
+						AlertBox.display("Success", "Flight Successfully Added!");
 
 					} else {
 						AlertBox.display("Error",
@@ -179,7 +179,7 @@ public class FlightRegistration extends Application implements EventHandler<Acti
 			}
 
 			else {
-				AlertBox.display("Error", "Error: departure cannot be before a arrival");
+				AlertBox.display("Error", "Error: arrival cannot be before a departure");
 			}
 		});
 

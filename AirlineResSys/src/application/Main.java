@@ -92,9 +92,11 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 		userId.setFont(new Font(18.0));
 
 		searchFlights.setLayoutX(1100.0);
-		searchFlights.setLayoutY(214.0);
+		searchFlights.setLayoutY(210.0);
+		searchFlights.setPrefHeight(25);
+		searchFlights.setPrefWidth(100);
 		searchFlights.setMnemonicParsing(false);
-		searchFlights.setText("Search Flights");
+		searchFlights.setText("Search Flight");
 		searchFlights.setOnAction(e -> {
 			FlightSearch search = new FlightSearch();
 			try {
@@ -112,16 +114,17 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 		table.setPrefHeight(329.0);
 		table.setPrefWidth(1031.11);
 
+		
 		myFlights.setLayoutX(420.0);
 		myFlights.setLayoutY(10.0);
 		myFlights.setText("My Flights");
 		myFlights.setFont(new Font(25.0));
 
 		refresh.setLayoutX(1100.0);
-		refresh.setLayoutY(179.0);
+		refresh.setLayoutY(180.0);
 		refresh.setMnemonicParsing(false);
 		refresh.setPrefHeight(25);
-		refresh.setPrefWidth(90);
+		refresh.setPrefWidth(100);
 		refresh.setOnAction(e -> {
 			try {
 
@@ -158,10 +161,10 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 		});
 
 		logOut.setLayoutX(1100.0);
-		logOut.setLayoutY(249.0);
+		logOut.setLayoutY(240.0);
 		logOut.setMnemonicParsing(false);
 		logOut.setPrefHeight(25);
-		logOut.setPrefWidth(90);
+		logOut.setPrefWidth(100);
 		logOut.setText("Log Out");
 		logOut.setOnAction(e -> {
 			LogIn loginPage = new LogIn();
@@ -200,18 +203,18 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 
 		Label deleteFlightLbl = new Label("Enter Flight Number to Delete:");
 		deleteFlightLbl.setLayoutX(1065);
-		deleteFlightLbl.setLayoutY(89);
+		deleteFlightLbl.setLayoutY(90);
 
 		deleteFlightTxt.setLayoutX(1100);
-		deleteFlightTxt.setLayoutY(109);
+		deleteFlightTxt.setLayoutY(110);
 		deleteFlightTxt.setPrefHeight(25);
-		deleteFlightTxt.setPrefWidth(90);
+		deleteFlightTxt.setPrefWidth(100);
 
 		deleteFlights.setLayoutX(1100.0);
-		deleteFlights.setLayoutY(139.0);
+		deleteFlights.setLayoutY(150.0);
 		deleteFlights.setMnemonicParsing(false);
 		deleteFlights.setPrefHeight(25.0);
-		deleteFlights.setPrefWidth(90.0);
+		deleteFlights.setPrefWidth(100.0);
 		deleteFlights.setText("Delete Flight");
 		deleteFlights.setOnAction(e -> {
 			try {
@@ -323,11 +326,14 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 		} catch (Exception ex) {
 
 		}
-		Button adminTool = new Button("Admin Add flight");
-		adminTool.setLayoutX(1100);
-		adminTool.setLayoutY(290);
+		Button adminTool = new Button("Add Flight");
+		adminTool.setLayoutX(1075);
+		adminTool.setLayoutY(280);
+		adminTool.setPrefHeight(25);
+		adminTool.setPrefWidth(145);
+		adminTool.setMnemonicParsing(false);
 		adminTool.setOnAction(e ->{
-			FlightRegistration flight =new FlightRegistration();
+			FlightRegistration flight = new FlightRegistration();
 			try {
 				flight.start(primaryStage);
 
@@ -337,9 +343,15 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 			}
 		});
 
-		Button adminTool1 = new Button("Admin Flight Edit/Delete");
-		adminTool1.setLayoutX(1100);
-		adminTool1.setLayoutY(330);
+		Button adminTool1 = new Button("Update/Delete Flight");
+		adminTool1.setLayoutX(1075);
+		adminTool1.setLayoutY(310);
+		adminTool1.setPrefHeight(25);
+		adminTool1.setPrefWidth(145);
+		adminTool1.setMnemonicParsing(false);
+		adminTool1.setAlignment(Pos.CENTER);
+		adminTool1.setTextAlignment(null);
+		adminTool1.setTextOverrun(null);
 		adminTool1.setOnAction(e -> {
 			FlightUpdate update = new FlightUpdate();
 			try {
@@ -351,13 +363,17 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 			}
 		});
 
+
+
+		// add fields to anchor pane
+		anchor.getChildren().addAll(deleteFlightLbl, userId, searchFlights, table, myFlights, deleteFlights,
+				deleteFlightTxt, logOut, refresh);
+		// adds admin tools to anchor pane if user is admin
 		if (isAdmin() == true) {
 			anchor.getChildren().add(adminTool);
 			anchor.getChildren().add(adminTool1);
 		}
 
-		anchor.getChildren().addAll(deleteFlightLbl, userId, searchFlights, table, myFlights, deleteFlights,
-				deleteFlightTxt, logOut, refresh);
 
 		Scene scene = new Scene(anchor, 1250, 500);
 		BackgroundFill myBF = new BackgroundFill(Color.LINEN, new CornerRadii(1), new Insets(0.0, 0.0, 0.0, 0.0));
@@ -375,11 +391,28 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 	}
 
 	public boolean isAdmin() {
-		return isAdmin;
+
+		if (LogIn.getUser().equalsIgnoreCase("admin")) {
+			boolean isAdmin = true;
+			return isAdmin;
+		}
+		else {
+			return isAdmin;
+		}
+
 	}
+
 
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
-	}
+		if (LogIn.getUser().equalsIgnoreCase("admin")) {
+			setAdmin(true);
+			isAdmin = true;
+		}
 
+		else {
+			isAdmin = false;
+		}
+
+	}
 }

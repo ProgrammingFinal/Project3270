@@ -212,7 +212,7 @@ public class Register extends Application implements EventHandler<ActionEvent> {
 
 		tConfirm.setLayoutX(274.0);
 		tConfirm.setLayoutY(329.0);
-		tConfirm.setPromptText("Confirm PAssword");
+		tConfirm.setPromptText("Confirm Password");
 
 		button.setLayoutX(284.0);
 		button.setLayoutY(534.0);

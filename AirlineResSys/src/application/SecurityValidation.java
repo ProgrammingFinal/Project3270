@@ -45,8 +45,8 @@ public class SecurityValidation extends Application implements EventHandler<Acti
 		try {
 			// get a connection to the database
 			Connection myConn = DriverManager.getConnection(
-					"jdbc:mysql://35.193.248.221:3306/?verifyServerCertificate=false&useSSL=true", "root",
-					"Tdgiheay12");
+					"jdbc:mysql://127.0.0.1:3306/demo", "root",
+					"programmingfinal1");
 			// create a statement
 			Statement myStat = myConn.createStatement();
 			// execute a query
@@ -87,13 +87,17 @@ public class SecurityValidation extends Application implements EventHandler<Acti
 		grid.setAlignment(Pos.TOP_CENTER);
 		securityQuestionLabel.setTextAlignment(TextAlignment.CENTER);
 
-		Label questionLabel = new Label(secQuest);
-		GridPane.setConstraints(questionLabel, 1, 1);
+
+		Label secQuestLabel = new Label ("Security Question: " + secQuest);
+		GridPane.setConstraints(secQuestLabel, 1, 1);
+		grid.setAlignment(Pos.CENTER);
+		secQuestLabel.setTextAlignment(TextAlignment.CENTER);
+
 
 		TextField answerField = new TextField();
 		GridPane.setConstraints(answerField, 1, 2);
 
-		Button okay = new Button("Okay");
+		Button okay = new Button("Ok");
 		GridPane.setConstraints(okay, 1, 3);
 		GridPane.setHalignment(okay, HPos.LEFT);
 		okay.setOnAction(e -> {
@@ -102,8 +106,8 @@ public class SecurityValidation extends Application implements EventHandler<Acti
 				// get a connection to the database
 				String userAnswer = answerField.getText().trim();
 				Connection myConn = DriverManager.getConnection(
-						"jdbc:mysql://35.193.248.221:3306/?verifyServerCertificate=false&useSSL=true", "root",
-						"Tdgiheay12");
+						"jdbc:mysql://127.0.0.1:3306/demo", "root",
+						"programmingfinal1");
 				// create a statement
 				Statement myStat = myConn.createStatement();
 				// execute a query
@@ -134,7 +138,7 @@ public class SecurityValidation extends Application implements EventHandler<Acti
 					AlertBox.display("Password", "The password for your account is: " + password);
 
 				} else if (count == 1 && secAnswer != userAnswer) {
-					AlertBox.display("Incorrect Answer", "That answer is incotrrect. Please try again.");
+					AlertBox.display("Incorrect Answer", "That answer is incorrect. Please try again.");
 				}
 
 			}
@@ -145,7 +149,7 @@ public class SecurityValidation extends Application implements EventHandler<Acti
 
 		});
 
-		Button cancel = new Button("cancel");
+		Button cancel = new Button("Cancel");
 		GridPane.setConstraints(cancel, 1, 3);
 		GridPane.setHalignment(cancel, HPos.RIGHT);
 		cancel.setOnAction(e -> {
@@ -163,7 +167,7 @@ public class SecurityValidation extends Application implements EventHandler<Acti
 
 		okay.setMinWidth(120);
 		cancel.setMinWidth(120);
-		grid.getChildren().addAll(securityQuestionLabel, questionLabel, answerField, okay, cancel);
+		grid.getChildren().addAll(securityQuestionLabel, secQuestLabel, answerField, okay, cancel);
 		Scene scene = new Scene(grid, 550, 150);
 
 		primaryStage.setScene(scene);

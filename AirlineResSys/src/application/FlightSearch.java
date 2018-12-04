@@ -17,7 +17,7 @@ import javafx.stage.*;
 
 public class FlightSearch extends Application implements EventHandler<ActionEvent> {
 	private ObservableList<ObservableList> data;
-	private String usernameId = "";
+	private String usernameID = "";
 	private Date depDate;
 	private Date arrDate;
 	private Time depTime;
@@ -115,12 +115,12 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 		this.arrTimestamp = arrTimestamp;
 	}
 
-	public String getUsernameId() {
-		return usernameId;
+	public String getUsernameID() {
+		return usernameID;
 	}
 
-	public void setUsernameId(String usernameId) {
-		this.usernameId = usernameId;
+	public void setUsernameID(String usernameID) {
+		this.usernameID = usernameID;
 	}
 
 	public int getConflictCount() {
@@ -167,6 +167,7 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 		launch(args);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -177,7 +178,7 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 		final ObservableList<Flight> data = FXCollections.observableArrayList();
 
 		ChoiceBox<String> dropdown = new ChoiceBox<>();
-		dropdown.getItems().addAll("Destination", "Origin", "Departure", "Airline");
+		dropdown.getItems().addAll("Destination", "Origin", "Date", "Airline");
 		dropdown.setValue("Destination");
 		dropdown.setLayoutY(60);
 		dropdown.setLayoutX(340);
@@ -245,8 +246,8 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 			int count = 0;
 			while (myRs.next()) {
 				count = count + 1;
-				setUsernameId(myRs.getString("id"));
-				System.out.println(getUsernameId());
+				setUsernameID(myRs.getString("username"));
+				System.out.println(getUsernameID());
 
 			}
 
@@ -272,8 +273,8 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 			int count = 0;
 			while (myRs.next()) {
 				count = count + 1;
-				setUsernameId(myRs.getString("id"));
-				System.out.println(getUsernameId());
+				setUsernameID(myRs.getString("username"));
+				System.out.println(getUsernameID());
 
 			}
 
@@ -295,15 +296,19 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 						"jdbc:mysql://127.0.0.1:3306/demo", "root",
 						"programmingfinal1");
 
-				String sqlFlightBook = "INSERT INTO `flights`.`Flight_User`(`Flight_id`,`User_id`)VALUES("
-						+ addFlight.getText().trim() + ", " + getUsernameId() + ")";
+				String sqlFlightBook = "INSERT INTO `flights`.`my_flight`"
+						+ "(`flight.Number`, `my_flight.UserID`)"
+						+ " VALUES("
+						+ addFlight.getText().trim() + ", " + getUsernameID() + ")";
 
-				String sqlFlightCheck = "SELECT `Flight_id`, `User_id` FROM `flights`.`Flight_User` where User_id = '"
-						+ getUsernameId() + "' and Flight_id= '" + addFlight.getText().trim() + "'";
+				String sqlFlightCheck = "SELECT `my_flight.Number`, `my_flight.UserID` "
+						+ "FROM `flights`.`my_flight` WHERE my_flight.UserID = '"
+						+ getUsernameID() + "' and my_flight.Number= '" + addFlight.getText().trim() + "'";
 
-				String sqlBookingCheck = "select  `number`,`departure_time`, `arrival_time`, `departure_date`, `arrival_date` from\r\n"
-						+ "flights.flight inner Join flights.Flight_User on Flight_id = flight.id \r\n"
-						+ "inner join flights.users on Flight_User.User_id = users.id where username = '"
+				String sqlBookingCheck = "select  `flight.number`, `flight.departure_time`, "
+						+ "`flight.arrival_time`, `flight.departure_date`, `flight.arrival_date` from\r\n"
+						+ "flights.flight inner Join flights.my_flight on my_flight.number = flight.number \r\n"
+						+ "inner join 'flights'.'users' on my_flight.UserID = users.UserID where username = '"
 						+ LogIn.getUser() + "'";
 
 				String bookingCheckValue = "SELECT `departure_date`, `departure_time` FROM `flights`.`flight` where number ='"
@@ -365,8 +370,8 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 				}
 
 				else {
-					AlertBox.display("Error!", "Error! you have alredy booked flight number: "
-							+ addFlight.getText().trim() + ". \n You cannot Book the same flight tiwce!");
+					AlertBox.display("Error!", "Error! you have already booked flight number: "
+							+ addFlight.getText().trim() + ". \n You cannot book the same flight twice!");
 				}
 				myStat.close();
 				myRs.close();
@@ -404,8 +409,8 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 		column6.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
 		column6.setMinWidth(128.88);
 
-		TableColumn<Flight, Date> column7 = new TableColumn<Flight, Date>("Arrival date");
-		column7.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+		TableColumn<Flight, Date> column7 = new TableColumn<Flight, Date>("Arrival Date");
+		column7.setCellValueFactory(new PropertyValueFactory<>("arrivalDate"));
 		column7.setMinWidth(128.88);
 
 		TableColumn<Flight, Time> column8 = new TableColumn<Flight, Time>("Arrival Time");
@@ -416,7 +421,7 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 		column9.setCellValueFactory(new PropertyValueFactory<>("seatsAvailable"));
 		column9.setMinWidth(128.88);
 
-		table.setTableMenuButtonVisible(false);
+		table.setTableMenuButtonVisible(true);
 
 		Button searchButton = new Button("Search");
 		searchButton.setLayoutX(715);
@@ -428,8 +433,8 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 				String dbSearch = getChoice(dropdown).trim();
 				String searchItem = searchTxt.getText().trim();
 				Connection myConn = DriverManager.getConnection(
-						"jdbc:mysql://35.193.248.221:3306/?verifyServerCertificate=false&useSSL=true", "root",
-						"Tdgiheay12");
+						"jdbc:mysql://127.0.0.1:3306/demo", "root",
+						"programmingfinal1");
 				String sqlUserCheck = "SELECT * FROM flights.flight WHERE " + dbSearch + " = '" + searchItem + "'";
 				// create a statement
 				PreparedStatement myStat = myConn.prepareStatement(sqlUserCheck);
@@ -442,7 +447,7 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 
 				while (myRs.next()) {
 
-					data.add(new Flight(myRs.getInt("number"), myRs.getString("airline"), myRs.getString("origin_city"),
+					data.add(new Flight(myRs.getInt ("number"), myRs.getString("airline"), myRs.getString("origin_city"),
 							myRs.getString("destination_city"), myRs.getDate("departure_date"),
 							myRs.getTime("departure_time"), myRs.getDate("arrival_date"), myRs.getTime("arrival_time"),
 							myRs.getInt("seats_available")));
@@ -491,7 +496,7 @@ public class FlightSearch extends Application implements EventHandler<ActionEven
 		String dbSearch = "";
 		String choice = dropdown.getValue();
 
-		if (choice.equals("Destnation")) {
+		if (choice.equals("Destination")) {
 			dbSearch = "destination_city";
 		}
 
