@@ -5,7 +5,7 @@ import java.util.Date;
 public class Flight {
 	
 	//set to private
-	private int numOfPassengers;
+	private static int numOfPassengers;
 	private int flightNum;
 	private String date;
 	private String arrivalTime;
@@ -18,8 +18,8 @@ public class Flight {
 	private int second;
 	private String departingCity;
 	private String arrivingCity;
-	private boolean reserve;
-	private int maxPassengers;
+	private static boolean reserve;
+	private static int maxPassengers;
 	
 	//no arg constructor
 	public Flight() {
@@ -86,22 +86,26 @@ public class Flight {
 	}
 	
 	//Book a flight and add 1 to total number of passengers
-		public void bookFlight() {
-			if(isFull(maxPassengers, numOfPassengers)==false) {
-				reserve=true;
-				numOfPassengers = numOfPassengers + 1;
-			}else {
-				System.out.println("Flight is full");
-			}
-		}
+		
+		
 		
 	//get fight information
 	public String getFlightInfo(int flightNum, String date, String arrivalTime, String departureTime, String departingCity, String arrivingCity) {
 		return "Flight Number is " + flightNum + ", date is " + date + ", departure time is " + departureTime + ", arrival time is " + arrivalTime + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
 	}
 	
+	public interface bookFlight{
+		public default void book() {
+			if(isFull(maxPassengers, numOfPassengers)==false) {
+				reserve=true;
+				numOfPassengers = numOfPassengers + 1;
+			}else {
+				System.out.println("Flight is full");
+			};
+	}
+	
 	//check if flight is full and return boolean value
-	public boolean isFull(int maxPassengers, int numOfPassengers) {
+	public static boolean isFull(int maxPassengers, int numOfPassengers) {
 		boolean isFull; 
 		if(numOfPassengers == maxPassengers || numOfPassengers >= maxPassengers) {
 			isFull = true;
@@ -109,6 +113,7 @@ public class Flight {
 			isFull = false;
 		}
 		return isFull;
+		}
 	}
 }
 
