@@ -94,6 +94,7 @@ public class Flight {
 		return "Flight Number is " + flightNum + ", date is " + date + ", departure time is " + departureTime + ", arrival time is " + arrivalTime + ", departing from " + departingCity + ", arriving at " + arrivingCity; 
 	}
 	
+	//interface with book flight method
 	public interface bookFlight{
 		public default void book() {
 			if(isFull(maxPassengers, numOfPassengers)==false) {
